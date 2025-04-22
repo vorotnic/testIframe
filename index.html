@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe Receiver</title>
+</head>
+<body>
+  <h1>Iframe Ready123</h1>
+  <p id="message">Waiting for message...</p>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      console.log('Received message in iframe:', event.data);
+      document.getElementById('message').textContent = `Message received from major page: ${event.data}`;
+    });
+  </script>
+</body>
+</html>
