@@ -3,15 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Iframe Receiver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <h1>Iframe Ready</h1>
-  <p id="message">Waiting for message...</p>
+
+  <form id="choiceForm">
+    <p>Select an option:</p>
+    <label>
+      <input type="radio" name="option" value="Option A"> Option A
+    </label><br>
+    <label>
+      <input type="radio" name="option" value="Option B"> Option B
+    </label><br>
+    <label>
+      <input type="radio" name="option" value="Option C"> Option C
+    </label><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result">
+    <p id="response">Selected option will appear here.</p>
+    <p id="message">Waiting for message from major page...</p>
+  </div>
 
   <script>
+    let latestMessage = '';
+
+    // Receive message from parent
     window.addEventListener('message', (event) => {
       console.log('Received message in iframe:', event.data);
-      document.getElementById('message').textContent = `Message received from major page: ${event.data}`;
+      latestMessage = event.data;
+      document.getElementById('message').textContent = `Message received from major page: ${latestMessage}`;
+    });
+
+    // Handle form submit
+    document.getElementById('choiceForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const selected = document.querySelector('input[name="option"]:checked');
+      const responseEl = document.getElementById('response');
+      const messageEl = document.getElementById('message');
+
+      if (selected) {
+        responseEl.textContent = `You selected: ${selected.value}`;
+      } else {
+        responseEl.textContent = 'No option selected.';
+      }
+
+      // Re-display last message from major page
+      messageEl.textContent = latestMessage
+        ? `Message received from major page: ${latestMessage}`
+        : 'Waiting for message from major page...';
     });
   </script>
 </body>
