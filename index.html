@@ -30,7 +30,7 @@
 <div class="actions" id="65-A" data-contentid="submit_button"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
 <input type="hidden" value="65" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="8a969dda2658998a68bb4608539c5940" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
-<input type="hidden" value="" name="email" id="email" readonly>
+<input value="" name="email" id="email" readonly>
       <div id="result">
     <p id="message">Waiting for message from major page...</p>
   </div>
@@ -66,6 +66,7 @@
     // }
 
     // Check if message has the expected structure
+      if (event.data && event.data.constructor === Object && 'email' in event.data) {
       const email = event.data.email;
 
       // Set the hidden input value
@@ -73,11 +74,11 @@
       if (emailInput) {
         emailInput.value = email;
       }
-
+      }
 
       const messageEl = document.getElementById('message');
       messageEl.textContent = event.data
-        ? `Message received from major page: ${JSON.stringify(event.data)}` : 'Waiting for message from major page...';
+        ? `Message received from major page: ${JSON.stringify(event.data.email)}` : 'Waiting for message from major page...';
     
   });
 </script>
