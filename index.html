@@ -30,9 +30,14 @@
 <div class="actions" id="65-A" data-contentid="submit_button"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
 <input type="hidden" value="65" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="8a969dda2658998a68bb4608539c5940" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
-<input type="hidden" value="" name="email" id="email" readonly disabled>
+<input type="hidden" value="" name="email" id="email" readonly>
+      <div id="result">
+    <p id="response">Selected option will appear here.</p>
+    <p id="message">Waiting for message from major page...</p>
+  </div>
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
+    
   <p class="supportInfo" >
       </p>
  </div>
@@ -70,13 +75,10 @@
         emailInput.value = email;
       }
 
-      // Optionally show the email somewhere for debug/info
+
       const messageEl = document.getElementById('message');
-      if (messageEl) {
-        messageEl.textContent = `Email received: ${email}`;
-      }
-    } else {
-      console.warn('Received message with unexpected format:', event.data);
+      messageEl.textContent = event.data
+        ? `Message received from major page: ${event.data}` : 'Waiting for message from major page...';
     }
   });
 </script>
