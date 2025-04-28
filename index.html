@@ -30,7 +30,7 @@
 
   <div id="result">
     <p id="response">Selected option will appear here.</p>
-    <p id="message">Waiting for message from major page...</p>
+    <p id="message">Waiting for message from parent page...</p>
   </div>
 
   <script>
@@ -39,8 +39,15 @@
     // Receive message from parent
     window.addEventListener('message', (event) => {
       console.log('Received message in iframe:', event.data);
-      latestMessage = event.data;
-      document.getElementById('message').textContent = `Message received from major page: ${latestMessage}`;
+
+      // Check if event.data is an object and has an email field
+      if (typeof event.data === 'object' && event.data !== null && 'email' in event.data) {
+        latestMessage = `Email received: ${event.data.email}`;
+      } else {
+        latestMessage = `Unknown message format: ${JSON.stringify(event.data)}`;
+      }
+
+      document.getElementById('message').textContent = latestMessage;
     });
 
     // Handle form submit
@@ -57,10 +64,10 @@
         responseEl.textContent = 'No option selected.';
       }
 
-      // Re-display last message from major page
+      // Re-display last message from parent
       messageEl.textContent = latestMessage
-        ? `Message received from major page: ${latestMessage}`
-        : 'Waiting for message from major page...';
+        ? latestMessage
+        : 'Waiting for message from parent page...';
     });
   </script>
 </body>
