@@ -1,42 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Embedded Form</title>
-</head>
-<body>
-
-  <form id="myForm">
-    <!-- Hidden field for the email -->
-    <input type="hidden" name="email" value="">
-
-    <!-- Other form fields -->
-    <input type="text" name="firstName" placeholder="First Name">
-    <input type="text" name="lastName" placeholder="Last Name">
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-    const allowedOrigin = '*'; 
-    window.addEventListener('message', (event) => {
-      if (event.origin !== allowedOrigin) {
-        console.warn('Unauthorized message origin:', event.origin);
-        return;
-      }
-
-      const email = event.data?.email;
-      if (!email) {
-        console.warn('No email provided in postMessage event');
-        return;
-      }
-
-      const hiddenEmailField = document.querySelector('input[name="email"]');
-      if (hiddenEmailField) {
-        hiddenEmailField.value = email;
-        console.log('Email populated:', email);
-      }
-    });
-  </script>
-
-</body>
-</html>
+!-- FORM: BODY SECTION -->
+<div class="wFormContainer" >
+    <div class="wFormHeader"></div>
+    <style type="text/css"></style><div class=""><div class="wForm" id="65-WRPR" data-language="en_US" dir="ltr">
+<div class="codesection" id="code-65"><div style="color:red">
+<noscript>For full functionality of this page it is necessary to <a href="http://www.enable-javascript.com/">enable Javascript.</a></noscript>
+</div></div>
+<h3 class="wFormTitle" data-testid="form-title" id="65-T">Communication preferences</h3>
+<form method="post" action="https://msfusa.tfaforms.net/api_v2/workflow/processor" class="hintsBelow labelsAbove" id="65">
+<div class="oneField field-container-D    " id="tfa_181-D" role="radiogroup" aria-labelledby="tfa_181-L" data-tfa-labelledby="-L tfa_181-L">
+<label id="tfa_181-L" class="label preField " data-tfa-check-label-for="tfa_181">I would like to:&nbsp;</label><br><div class="inputWrapper"><span id="tfa_181" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_183" class="" id="tfa_183" name="tfa_181" data-conditionals="#tfa_342" aria-labelledby="tfa_183-L" data-tfa-labelledby="tfa_181-L tfa_183-L" data-tfa-parent-id="tfa_181"><label class="label postField" id="tfa_183-L" for="tfa_183"><span class="input-radio-faux"></span>Change the frequency of communications I receive</label></span><span class="oneChoice"><input type="radio" value="tfa_184" class="" id="tfa_184" name="tfa_181" data-conditionals="#tfa_888" aria-labelledby="tfa_184-L" data-tfa-labelledby="tfa_181-L tfa_184-L" data-tfa-parent-id="tfa_181"><label class="label postField" id="tfa_184-L" for="tfa_184"><span class="input-radio-faux"></span>Report duplicate mailings</label></span></span></div>
+</div>
+<div id="tfa_342" class="section group" data-condition="`#tfa_183`">
+<label class="label preField" id="tfa_342-L"><b>Mailing Options</b></label><br><div class="oneField field-container-D    " id="tfa_339-D" role="radiogroup" aria-labelledby="tfa_339-L" data-tfa-labelledby="-L tfa_339-L">
+<label id="tfa_339-L" class="label preField " data-tfa-check-label-for="tfa_339">Paper mailing options</label><br><div class="inputWrapper"><span id="tfa_339" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_340" class="" id="tfa_340" name="tfa_339" aria-labelledby="tfa_340-L" data-tfa-labelledby="tfa_339-L tfa_340-L" data-tfa-parent-id="tfa_339"><label class="label postField" id="tfa_340-L" for="tfa_340"><span class="input-radio-faux"></span>Remove me from all paper mailing lists</label></span><span class="oneChoice"><input type="radio" value="tfa_341" class="" id="tfa_341" name="tfa_339" data-conditionals="#tfa_471" aria-labelledby="tfa_341-L" data-tfa-labelledby="tfa_339-L tfa_341-L" data-tfa-parent-id="tfa_339"><label class="label postField" id="tfa_341-L" for="tfa_341"><span class="input-radio-faux"></span>Reduce the amount of paper mailings I receive</label></span><span class="oneChoice"><input type="radio" value="tfa_894" class="" id="tfa_894" name="tfa_339" aria-labelledby="tfa_894-L" data-tfa-labelledby="tfa_339-L tfa_894-L" data-tfa-parent-id="tfa_339"><label class="label postField" id="tfa_894-L" for="tfa_894"><span class="input-radio-faux"></span>Stop receiving receipts by postal mail</label></span></span></div>
+</div>
+<div class="oneField field-container-D    " id="tfa_471-D" role="radiogroup" aria-labelledby="tfa_471-L" data-tfa-labelledby="-L tfa_471-L">
+<label id="tfa_471-L" class="label preField " data-tfa-check-label-for="tfa_471"><span style="color: rgb(38, 38, 38); font-family: &quot;PT Sans&quot;, &quot;Helvetica Neue&quot;, Arial, &quot;Lucida Grande&quot;, Tahoma, Verdana, sans-serif; font-size: 19px;">Please let us know how often you would like to receive mailings from MSF</span></label><br><div class="inputWrapper"><span id="tfa_471" class="choices vertical " data-condition="`#tfa_341`"><span class="oneChoice"><input type="radio" value="tfa_472" class="" id="tfa_472" name="tfa_471" aria-labelledby="tfa_472-L" data-tfa-labelledby="tfa_471-L tfa_472-L" data-tfa-parent-id="tfa_471"><label class="label postField" id="tfa_472-L" for="tfa_472"><span class="input-radio-faux"></span>Once per year</label></span><span class="oneChoice"><input type="radio" value="tfa_473" class="" id="tfa_473" name="tfa_471" aria-labelledby="tfa_473-L" data-tfa-labelledby="tfa_471-L tfa_473-L" data-tfa-parent-id="tfa_471"><label class="label postField" id="tfa_473-L" for="tfa_473"><span class="input-radio-faux"></span>Twice per year</label></span><span class="oneChoice"><input type="radio" value="tfa_474" class="" id="tfa_474" name="tfa_471" aria-labelledby="tfa_474-L" data-tfa-labelledby="tfa_471-L tfa_474-L" data-tfa-parent-id="tfa_471"><label class="label postField" id="tfa_474-L" for="tfa_474"><span class="input-radio-faux"></span>Four times per year</label></span></span></div>
+</div>
+<div class="oneField field-container-D    " id="tfa_332-D" role="radiogroup" aria-labelledby="tfa_332-L" data-tfa-labelledby="-L tfa_332-L">
+<label id="tfa_332-L" class="label preField " data-tfa-check-label-for="tfa_332">Email options</label><br><div class="inputWrapper"><span id="tfa_332" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_333" class="" id="tfa_333" name="tfa_332" aria-labelledby="tfa_333-L" data-tfa-labelledby="tfa_332-L tfa_333-L" data-tfa-parent-id="tfa_332"><label class="label postField" id="tfa_333-L" for="tfa_333"><span class="input-radio-faux"></span><span style="font-size: 14px;">Remove from e-mail list</span></label></span><span class="oneChoice"><input type="radio" value="tfa_334" class="" id="tfa_334" name="tfa_332" aria-labelledby="tfa_334-L" data-tfa-labelledby="tfa_332-L tfa_334-L" data-tfa-parent-id="tfa_332"><label class="label postField" id="tfa_334-L" for="tfa_334"><span class="input-radio-faux"></span><span style="font-size: 14px;">Receive email updates</span></label></span></span></div>
+</div>
+</div>
+<div class="oneField field-container-D    " id="tfa_888-D">
+<label id="tfa_888-L" class="label preField " for="tfa_888"><span style="font-size: 14px;">Please provide any additional details about your request.&nbsp;</span></label><br><div class="inputWrapper"><textarea id="tfa_888" name="tfa_888" data-condition="`#tfa_184`" title="Please provide any additional details about your request. " class=""></textarea></div>
+</div>
+<div class="oneField field-container-D     wf-acl-hidden" id="tfa_889-D">
+<label id="tfa_889-L" class="label preField " for="tfa_889">Email for autoresponder</label><br><div class="inputWrapper"><input type="text" id="tfa_889" name="tfa_889" value="" readonly title="Email for autoresponder" class='validate-email formula=NEWEMAIL?NEWEMAIL:(OLDEMAIL?OLDEMAIL:"") readonly'></div>
+</div>
+<div class="actions" id="65-A" data-contentid="submit_button"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
+<div style="clear:both"></div>
+<input type="hidden" value="65" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="8a969dda2658998a68bb4608539c5940" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+</form>
+</div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
+  <p class="supportInfo" >
+      </p>
+ </div>
+<script
+    id="analytics-collector-script"
+    type="text/javascript"
+    src="https://msfusa.tfaforms.net/dist/analytics/data-collector.b669b669e4e65b402126.js"
+    data-customer-id="146396"
+    data-endpoint="https://analytics.formassembly.com/v1/traces"
+></script>
+<script src="https://msfusa.tfaforms.net/api_v2/sst/copy-and-paste"></script>
