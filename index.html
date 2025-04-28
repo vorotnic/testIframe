@@ -30,6 +30,7 @@
 <div class="actions" id="65-A" data-contentid="submit_button"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
 <input type="hidden" value="65" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="8a969dda2658998a68bb4608539c5940" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="" name="email" id="email" readonly disabled>
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
   <p class="supportInfo" >
@@ -42,4 +43,41 @@
     data-customer-id="146396"
     data-endpoint="https://analytics.formassembly.com/v1/traces"
 ></script>
+<script>
+  // Allow multiple parent origins
+  const allowedOrigins = [
+    'https://classy.org',
+    'https://classy-test.org',
+    'https://localhost.classy-test.org:4000/'  // remove. this is just for testing
+  ];
+
+  window.addEventListener('message', (event) => {
+    console.log('Message received in iframe:', event);
+
+    // Check if the event.origin is in our allowed list
+    if (!allowedOrigins.includes(event.origin)) {
+      console.warn('Blocked message from unknown origin:', event.origin);
+      return;
+    }
+
+    // Check if message has the expected structure
+    if (event.data && event.data.constructor === Object && 'email' in event.data) {
+      const email = event.data.email;
+
+      // Set the hidden input value
+      const emailInput = document.getElementById('email');
+      if (emailInput) {
+        emailInput.value = email;
+      }
+
+      // Optionally show the email somewhere for debug/info
+      const messageEl = document.getElementById('message');
+      if (messageEl) {
+        messageEl.textContent = `Email received: ${email}`;
+      }
+    } else {
+      console.warn('Received message with unexpected format:', event.data);
+    }
+  });
+</script>
 <script src="https://msfusa.tfaforms.net/api_v2/sst/copy-and-paste"></script>
