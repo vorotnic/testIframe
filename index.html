@@ -77,7 +77,7 @@
 
       const messageEl = document.getElementById('message');
       messageEl.textContent = event.data
-        ? `Message received from major page: ${event.data}` : 'Waiting for message from major page...';
+        ? `Message received from major page: ${JSON.stringify(event.data)}` : 'Waiting for message from major page...';
     
   });
 </script>
