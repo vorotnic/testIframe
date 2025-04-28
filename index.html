@@ -31,6 +31,7 @@
 <div style="clear:both"></div>
 <input type="hidden" value="65" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="8a969dda2658998a68bb4608539c5940" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 <input value="" name="email" id="email" readonly disabled>
+<p id="message">Waiting for message from major page...</p>
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
   <p class="supportInfo" >
@@ -60,6 +61,13 @@
       return;
     }
 
+      const messageEl = document.getElementById('message');
+
+    // Re-display last message from major page
+      messageEl.textContent = latestMessage
+        ? `Message received from major page: ${latestMessage}` : 'Waiting for message from major page...';
+    });
+      
     // Check if message has the expected structure
     if (event.data && event.data.constructor === Object && 'email' in event.data) {
       const email = event.data.email;
