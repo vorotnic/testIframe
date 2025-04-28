@@ -49,20 +49,21 @@
 ></script>
 <script>
   // Allow multiple parent origins
-  const allowedOrigins = [
-    'https://classy.org',
-    'https://classy-test.org',
-    'https://localhost.classy-test.org:4000/'  // remove. this is just for testing
-  ];
+  // const allowedOrigins = [
+  //   'https://classy.org',
+  //   'https://classy-test.org',
+  //   'https://localhost.classy-test.org:4000/'  // remove. this is just for testing
+  // ];
+
 
   window.addEventListener('message', (event) => {
     console.log('Message received in iframe:', event);
 
     // Check if the event.origin is in our allowed list
-    if (!allowedOrigins.includes(event.origin)) {
-      console.warn('Blocked message from unknown origin:', event.origin);
-      return;
-    }
+    // if (!allowedOrigins.includes(event.origin)) {
+    //   console.warn('Blocked message from unknown origin:', event.origin);
+    //   return;
+    // }
 
     // Check if message has the expected structure
       const email = event.data.email;
