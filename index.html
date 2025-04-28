@@ -2,73 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Iframe Receiver</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-  </style>
+  <title>Embedded Form</title>
 </head>
 <body>
-  <h1>Test Iframe Ready</h1>
 
-  <form id="choiceForm">
-    <p>Select an option:</p>
-    <label>
-      <input type="radio" name="option" value="Option A"> Option A
-    </label><br>
-    <label>
-      <input type="radio" name="option" value="Option B"> Option B
-    </label><br>
+  <form id="myForm">
+    <!-- Hidden field for the email -->
+    <input type="hidden" name="email" value="">
+
+    <!-- Other form fields -->
+    <input type="text" name="firstName" placeholder="First Name">
+    <input type="text" name="lastName" placeholder="Last Name">
     <button type="submit">Submit</button>
   </form>
 
-  <div id="result">
-    <p id="response">Selected option will appear here.</p>
-    <p id="message">Waiting for message from parent page...</p>
-  </div>
-
   <script>
-    let latestMessage = '';
-
-    // Receive message from parent
+    const allowedOrigin = '*'; 
     window.addEventListener('message', (event) => {
-      console.log('Received message in iframe:', event.data);
-
-      // Check if event.data is an object and has an email field
-      if (typeof event.data === 'object' && event.data !== null && 'email' in event.data) {
-        latestMessage = `Email received: ${event.data.email}`;
-      } else {
-        latestMessage = `Unknown message format: ${JSON.stringify(event.data)}`;
+      if (event.origin !== allowedOrigin) {
+        console.warn('Unauthorized message origin:', event.origin);
+        return;
       }
 
-      document.getElementById('message').textContent = latestMessage;
-    });
-
-    // Handle form submit
-    document.getElementById('choiceForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const selected = document.querySelector('input[name="option"]:checked');
-      const responseEl = document.getElementById('response');
-      const messageEl = document.getElementById('message');
-
-      if (selected) {
-        responseEl.textContent = `You selected: ${selected.value}`;
-      } else {
-        responseEl.textContent = 'No option selected.';
+      const email = event.data?.email;
+      if (!email) {
+        console.warn('No email provided in postMessage event');
+        return;
       }
 
-      // Re-display last message from parent
-      messageEl.textContent = latestMessage
-        ? latestMessage
-        : 'Waiting for message from parent page...';
+      const hiddenEmailField = document.querySelector('input[name="email"]');
+      if (hiddenEmailField) {
+        hiddenEmailField.value = email;
+        console.log('Email populated:', email);
+      }
     });
   </script>
+
 </body>
 </html>
