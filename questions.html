@@ -1,0 +1,97 @@
+<!-- FORM: BODY SECTION -->
+<div class="wFormContainer" >
+    <div class="wFormHeader"></div>
+    <style type="text/css">
+                #tfa_716,
+                *[id^="tfa_716["] {
+                    width: 426px !important;
+                }
+                #tfa_716-D,
+                *[id^="tfa_716["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+                #tfa_716-L,
+                label[id^="tfa_716["] {
+                    width: 406px !important;
+                    min-width: 0px;
+                }
+                #tfa_716,
+                *[id^="tfa_716["] {
+                    height: 117px !important
+                }
+                #tfa_716-D,
+                *[id^="tfa_716["][class~="field-container-D"] {
+                    height: auto !important;
+                }
+                #tfa_716-L,
+                label[id^="tfa_716["],
+                *[id^="tfa_716["][id$="-L"] {
+                    height: auto !important;
+                }
+            </style><div class=""><div class="wForm" id="22-WRPR" data-language="en_US" dir="ltr">
+<div class="codesection" id="code-22"><div style="color:red">
+<noscript>For full functionality of this page it is necessary to <a href="http://www.enable-javascript.com/">enable Javascript.</a></noscript>
+</div></div>
+<form method="post" action="https://msfusa.tfaforms.net/api_v2/workflow/processor" class="hintsBelow labelsAbove" id="22">
+<div id="tfa_694" class="section group">
+<label class="label preField" id="tfa_694-L">General Questions/Feedback</label><br><div class="oneField field-container-D    " id="tfa_716-D"><div class="inputWrapper"><textarea id="tfa_716" name="tfa_716" title="" class=""></textarea></div></div>
+</div>
+<div class="actions" id="22-A" data-contentid="submit_button"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
+<div style="clear:both"></div>
+<input type="hidden" value="22" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="f6824f08afc2834f02409b4aaaeb83e6" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"><input type="hidden" value="9" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="" name="email" id="email" readonly>
+</form>
+</div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
+  <p class="supportInfo" >
+      </p>
+ </div>
+
+
+<script>
+
+
+ window.addEventListener('message', (event) => {
+   //Allow multiple parent origins
+   const allowedOrigins = [
+     'https://www.classy.org',
+     'https://dev.classy-test.org',
+     'https://staging.classy-test.org',
+     'https://preprod.classy.org',
+    'https://localhost.classy-test.org:4000'  // remove. this is just for testing
+
+     
+   ];
+
+
+   //Check if the event.origin is in allowed list
+   if (!allowedOrigins.includes(event.origin)) {
+     console.warn('Blocked message from unknown origin:', event.origin);
+     return;
+   }
+
+
+   // Check if message has the expected structure
+   if (event.data && event.data.constructor === Object && event.data.email) {
+     const email = event.data.email;
+
+
+     // Set the hidden input value
+     const emailInput = document.getElementById('email');
+     if (emailInput) {
+       emailInput.value = email;
+     }
+   } else {
+     console.warn('Structure of message is not expected:', event.data);
+     return;
+   }
+ });
+</script>
+<script
+    id="analytics-collector-script"
+    type="text/javascript"
+    src="https://msfusa.tfaforms.net/dist/analytics/data-collector.b669b669e4e65b402126.js"
+    data-customer-id="146396"
+    data-endpoint="https://analytics.formassembly.com/v1/traces"
+></script>
+<script src="https://msfusa.tfaforms.net/api_v2/sst/copy-and-paste"></script>
+
